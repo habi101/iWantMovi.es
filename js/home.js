@@ -120,8 +120,6 @@ const API_KEY = 'f47b82605892b2de0772d351a0afefbd';
       displayList(anime, 'anime-list');
     }
 
-    init();
-    
     const form = document.querySelector('.search-bar');
 const input = form.querySelector('input');
 const resultsContainer = document.getElementById('search-results');
@@ -167,3 +165,5 @@ form.addEventListener('submit', async (e) => {
     console.error(error);
   }
 });
+
+    init();
