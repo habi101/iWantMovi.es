@@ -1,19 +1,22 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Arial, sans-serif; background: #111; color: #fff; }
 
-    .navbar {
-    display: flex;
-    justify-content: space-between; /* centers the logo horizontally */
-    align-items: center;
-    padding: 5px;
-    background: #222;
-  }
-  .site-logo-img {
-  height: 70px;
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #222;
+  flex-wrap: wrap; /* helpful for smaller screens */
+}
+
+.site-logo-img {
+  height: 60px;
   max-width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 1px white);
 }
+
   .search-bar {
   display: flex;
   align-items: center;
@@ -328,4 +331,37 @@
   .site-logo-img {
     height: 45px;
   }
+}
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.search-card {
+  background: #1c1c1c;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.search-card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-bottom: 1px solid #333;
+}
+
+.search-card h3 {
+  font-size: 16px;
+  margin: 10px;
+}
+
+.search-card p {
+  font-size: 12px;
+  margin: 0 10px 10px;
+  color: #aaa;
 }

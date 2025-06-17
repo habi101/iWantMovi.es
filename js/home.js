@@ -121,3 +121,49 @@ const API_KEY = 'f47b82605892b2de0772d351a0afefbd';
     }
 
     init();
+    
+    const form = document.querySelector('.search-bar');
+const input = form.querySelector('input');
+const resultsContainer = document.getElementById('search-results');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const query = input.value.trim();
+  if (!query) return;
+
+  const apiKey = 'f47b82605892b2de0772d351a0afefbd'; // <- ⛔ Replace this!
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    resultsContainer.innerHTML = '';
+
+    if (data.results.length === 0) {
+      resultsContainer.innerHTML = '<p style="color: #fff;">No results found.</p>';
+      return;
+    }
+
+    data.results.forEach(movie => {
+      const poster = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+        : 'images/placeholder.png';
+
+      const card = document.createElement('div');
+      card.classList.add('search-card');
+      card.innerHTML = `
+        <img src="${poster}" alt="${movie.title}">
+        <div>
+          <h3>${movie.title}</h3>
+          <p>${movie.overview.slice(0, 100)}...</p>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+
+  } catch (error) {
+    resultsContainer.innerHTML = '<p style="color:red;">Error fetching data.</p>';
+    console.error(error);
+  }
+});
