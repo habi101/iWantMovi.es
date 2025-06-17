@@ -5,18 +5,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
+  padding: 0; /* Removed padding */
   background: #222;
   flex-wrap: wrap; /* helpful for smaller screens */
 }
 
-.site-logo-img {
-  height: 60px;
-  max-width: 100%;
+  .site-logo-img {
+  height: 300px;
+  max-width: 200%;
   object-fit: contain;
   filter: drop-shadow(0 0 1px white);
 }
-
   .search-bar {
   display: flex;
   align-items: center;
@@ -25,7 +24,7 @@
   padding: 0 10px;
   width: 180px;
   height: 35px;
-  border: 2px solid #8c52ff;
+  border: 3px solid #000;
   margin-left: auto;
 }
 
@@ -208,7 +207,7 @@
   }
 
   .search-bar {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   .banner {
