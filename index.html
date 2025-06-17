@@ -16,21 +16,19 @@
 </head>
 
 <body>
-  <div class="navbar">
-    <a href="index.html">
-      <img src="images/logo-transparent.png" alt="IWantMovies Logo" class="site-logo-img" />
-    </a>
-    <i class="fa fa-search" onclick="openSearchModal()" style="color:white; font-size:20px; cursor:pointer;"></i>
-<form class="search-bar" id="search-form">
-  <input id="search-input" type="search" placeholder="Search for a movie..." />
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
-<div id="search-results" class="search-results"></div>
-</div> 
+<div class="navbar">
+  <a href="index.html">
+    <img src="images/logo-transparent.png" alt="IWantMovies Logo" class="site-logo-img" />
+  </a>
+  <i class="fa fa-search" onclick="openSearchModal()" style="color:white; font-size:20px; cursor:pointer;"></i>
+</div>
 
-  <div id="search-modal" style="display: none;">
-  <button onclick="closeSearchModal()">Close</button>
-  <div id="search-results"></div>
+<div id="search-modal" class="search-modal">
+  <div class="modal-header">
+    <button onclick="closeSearchModal()" class="close-btn">✕</button>
+    <input id="search-input" type="search" placeholder="Search for movies..." oninput="searchTMDB()" />
+  </div>
+  <div id="search-results" class="search-results"></div>
 </div>
 
   <div class="banner" id="banner">
@@ -76,12 +74,6 @@
     </div>
   </div>
 
-  <div class="search-modal" id="search-modal">
-    <span class="close" onclick="closeSearchModal()" style="color: red;">&times;</span>
-    <input type="text" id="search-input" placeholder="Search for a movie or show..." oninput="searchTMDB()" />
-    <div class="results" id="search-results"></div>
-  </div>
-
 <footer class="footer">
   <div class="footer-content">
     <p style="color: red;">© 2025 iWantMovi.es. All rights reserved.</p>
@@ -92,14 +84,6 @@
     </small>
   </div>
 </footer>
-<!-- Add this at the bottom of your body tag -->
-<div id="search-modal" class="search-modal">
-  <div class="modal-header">
-    <button onclick="closeSearchModal()" class="close-btn">✕</button>
-    <input id="search-input" type="search" placeholder="Search for movies..." />
-  </div>
-  <div id="search-results" class="search-results"></div>
-</div>
 
   <script>
   function openSearchModal() {

@@ -141,14 +141,19 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
 
   data.results.forEach(item => {
     if (!item.poster_path) return;
-    const img = document.createElement('img');
-    img.src = `${IMG_URL}${item.poster_path}`;
-    img.alt = item.title || item.name;
-    img.onclick = () => {
-      closeSearchModal();
-      showDetails(item);
-    };
-    container.appendChild(img);
+    const div = document.createElement('div');
+div.className = 'result-item';
+
+const img = document.createElement('img');
+img.src = `${IMG_URL}${item.poster_path}`;
+img.alt = item.title || item.name;
+img.onclick = () => {
+  closeSearchModal();
+  showDetails(item);
+};
+
+div.appendChild(img);
+container.appendChild(div);
   });
 
   // Show search modal
