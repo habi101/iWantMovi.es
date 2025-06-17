@@ -3,7 +3,7 @@
 
     .navbar {
     display: flex;
-    justify-content: center; /* centers the logo horizontally */
+    justify-content: space-between; /* centers the logo horizontally */
     align-items: center;
     padding: 5px;
     background: #222;
@@ -14,7 +14,34 @@
   object-fit: contain;
   filter: drop-shadow(0 0 1px white);
 }
-  
+ .search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  padding: 0 10px;
+  width: 160px; /* ✅ Smaller fixed width */
+  height: 35px;
+  border: 2px solid #8c52ff;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px 8px;
+  width: 100px; /* ✅ Fixed width for input */
+  background: transparent;
+}
+
+.search-bar .fa {
+  color: #8c52ff;
+  font-size: 16px;
+  margin-left: auto;
+}
+
     .banner {
       height: 50vh;
       background-size: cover;
