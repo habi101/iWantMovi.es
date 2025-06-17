@@ -119,51 +119,38 @@ const API_KEY = '9b53fd6f29ee601ac4a3d721b3d7ffe5';
       displayList(tvShows, 'tvshows-list');
       displayList(anime, 'anime-list');
     }
+    
+    init();
+    
+    const apiKey = '9b53fd6f29ee601ac4a3d721b3d7ffe5';
 
-    const form = document.querySelector('.search-bar');
-const input = form.querySelector('input');
-const resultsContainer = document.getElementById('search-results');
+const input = document.getElementById('search-input');
+const resultsBox = document.getElementById('search-results');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+input.addEventListener('input', async () => {
   const query = input.value.trim();
+  resultsBox.innerHTML = '';
+
   if (!query) return;
 
-  const apiKey = '9b53fd6f29ee601ac4a3d721b3d7ffe5'; // <- ⛔ Replace this!
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`;
-
   try {
-    const res = await fetch(url);
-    const data = await res.json();
+    const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${encodeURIComponent(query)}`);
+    const data = await response.json();
 
-    resultsContainer.innerHTML = '';
+    data.results.slice(0, 6).forEach(result => {
+      const title = result.title || result.name;
+      const div = document.createElement('div');
+      div.textContent = title;
 
-    if (data.results.length === 0) {
-      resultsContainer.innerHTML = '<p style="color: #fff;">No results found.</p>';
-      return;
-    }
+      div.addEventListener('click', () => {
+        alert(`You clicked: ${title}`);
+        // Here, you can link this to open your modal player if you want.
+      });
 
-    data.results.forEach(movie => {
-      const poster = movie.poster_path
-        ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-        : 'images/placeholder.png';
-
-      const card = document.createElement('div');
-      card.classList.add('search-card');
-      card.innerHTML = `
-        <img src="${poster}" alt="${movie.title}">
-        <div>
-          <h3>${movie.title}</h3>
-          <p>${movie.overview.slice(0, 100)}...</p>
-        </div>
-      `;
-      resultsContainer.appendChild(card);
+      resultsBox.appendChild(div);
     });
 
   } catch (error) {
-    resultsContainer.innerHTML = '<p style="color:red;">Error fetching data.</p>';
-    console.error(error);
+    console.error('Search error:', error);
   }
 });
-
-    init();

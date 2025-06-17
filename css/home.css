@@ -9,7 +9,6 @@
   background: #222;
   flex-wrap: wrap; /* helpful for smaller screens */
 }
-
   .site-logo-img {
   height: 300px;
   max-width: 200%;
