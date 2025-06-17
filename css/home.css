@@ -14,6 +14,39 @@
   object-fit: contain;
   filter: drop-shadow(0 0 1px white);
 }
+  .search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  padding: 0 10px;
+  width: 180px;
+  height: 35px;
+  border: 2px solid #8c52ff;
+  margin-left: auto;
+}
+
+  .search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  padding: 5px 8px;
+  color: black;
+}
+
+  .search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+  .search-bar .fa {
+  color: #8c52ff;
+  font-size: 16px;
+}
 
     .banner {
       height: 50vh;
