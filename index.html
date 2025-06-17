@@ -20,6 +20,7 @@
     <a href="index.html">
       <img src="images/logo-transparent.png" alt="IWantMovies Logo" class="site-logo-img" />
     </a>
+    <i class="fa fa-search" onclick="openSearchModal()" style="color:white; font-size:20px; cursor:pointer;"></i>
 <form class="search-bar" id="search-form">
   <input id="search-input" type="search" placeholder="Search for a movie..." />
   <button type="submit"><i class="fa fa-search"></i></button>
@@ -91,6 +92,24 @@
     </small>
   </div>
 </footer>
+<!-- Add this at the bottom of your body tag -->
+<div id="search-modal" class="search-modal">
+  <div class="modal-header">
+    <button onclick="closeSearchModal()" class="close-btn">✕</button>
+    <input id="search-input" type="search" placeholder="Search for movies..." />
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
 
-  
+  <script>
+  function openSearchModal() {
+    document.getElementById('search-modal').style.display = 'flex';
+    document.getElementById('search-input').focus();
+  }
+
+  function closeSearchModal() {
+    document.getElementById('search-modal').style.display = 'none';
+    document.getElementById('search-results').innerHTML = '';
+  }
+</script>
 </body>
