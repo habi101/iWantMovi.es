@@ -1,4 +1,4 @@
-const API_KEY = 'f47b82605892b2de0772d351a0afefbd';
+const API_KEY = '9b53fd6f29ee601ac4a3d721b3d7ffe5';
     const BASE_URL = 'https://api.themoviedb.org/3';
     const IMG_URL = 'https://image.tmdb.org/t/p/original';
     let currentItem;
@@ -129,7 +129,7 @@ form.addEventListener('submit', async (e) => {
   const query = input.value.trim();
   if (!query) return;
 
-  const apiKey = 'f47b82605892b2de0772d351a0afefbd'; // <- ⛔ Replace this!
+  const apiKey = '9b53fd6f29ee601ac4a3d721b3d7ffe5'; // <- ⛔ Replace this!
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`;
 
   try {
