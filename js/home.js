@@ -140,16 +140,18 @@ input.addEventListener('input', async () => {
     data.results.slice(0, 6).forEach(result => {
       const title = result.title || result.name;
       const div = document.createElement('div');
-      div.textContent = title;
+      const link = document.createElement('a');
+link.textContent = title;
+link.href = "#"; // optional, or link to another page if needed
+link.className = "search-result-item";
+link.onclick = () => {
+  closeSearchModal();
+  showDetails(result); // shows the modal with full movie info
+};
 
-      div.addEventListener('click', () => {
-        alert(`You clicked: ${title}`);
-        // Here, you can link this to open your modal player if you want.
-      });
-
-      resultsBox.appendChild(div);
+resultsBox.appendChild(link);
     });
-
+    
   } catch (error) {
     console.error('Search error:', error);
   }

@@ -49,6 +49,20 @@
   font-size: 16px;
 }
 
+  .search-result-item {
+  display: block;
+  color: white;
+  background: #333;
+  padding: 10px;
+  text-decoration: none;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background: #444;
+}
+
     .banner {
       height: 50vh;
       background-size: cover;
