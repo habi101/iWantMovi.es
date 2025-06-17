@@ -20,12 +20,17 @@
     <a href="index.html">
       <img src="images/logo-transparent.png" alt="IWantMovies Logo" class="site-logo-img" />
     </a>
-<div class="search-bar">
+<form class="search-bar" id="search-form">
   <input id="search-input" type="search" placeholder="Search for a movie..." />
-  <i class="fa fa-search"></i>
-</div>
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
 <div id="search-results" class="search-results"></div>
 </div> 
+
+  <div id="search-modal" style="display: none;">
+  <button onclick="closeSearchModal()">Close</button>
+  <div id="search-results"></div>
+</div>
 
   <div class="banner" id="banner">
     <h1 id="banner-title"></h1>

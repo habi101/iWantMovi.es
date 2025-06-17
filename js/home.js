@@ -122,6 +122,39 @@ const API_KEY = '9b53fd6f29ee601ac4a3d721b3d7ffe5';
     
     init();
     
+    // Submit search form and show modal with results
+document.getElementById('search-form').addEventListener('submit', async (e) => {
+  e.preventDefault(); // Prevent page reload
+  const query = document.getElementById('search-input').value.trim();
+  if (!query) return;
+
+  const res = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&query=${query}`);
+  const data = await res.json();
+
+  const container = document.getElementById('search-results');
+  container.innerHTML = '';
+
+  if (data.results.length === 0) {
+    container.innerHTML = '<p>No results found.</p>';
+    return;
+  }
+
+  data.results.forEach(item => {
+    if (!item.poster_path) return;
+    const img = document.createElement('img');
+    img.src = `${IMG_URL}${item.poster_path}`;
+    img.alt = item.title || item.name;
+    img.onclick = () => {
+      closeSearchModal();
+      showDetails(item);
+    };
+    container.appendChild(img);
+  });
+
+  // Show search modal
+  document.getElementById('search-modal').style.display = 'flex';
+});
+    
     const apiKey = '9b53fd6f29ee601ac4a3d721b3d7ffe5';
 
 const input = document.getElementById('search-input');
