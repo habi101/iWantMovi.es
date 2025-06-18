@@ -3,33 +3,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Website</title>
-
-  <!-- Correct paths -->
   <link rel="stylesheet" href="css/home.css">
+  <link rel="preload" href="css/home.css" as="style">
+  <link rel="preload" href="js/home.js" as="script">
   <link rel="manifest" href="manifest.json">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- JavaScript -->
   <script defer src="js/home.js"></script>
 </head>
 
 <body>
-<div class="navbar">
-  <a href="index.html">
-    <img src="images/logo-transparent.png" alt="IWantMovies Logo" class="site-logo-img" />
-  </a>
-  <i class="fa fa-search" onclick="openSearchModal()" style="color:white; font-size:20px; cursor:pointer;"></i>
-</div>
-
-<div id="search-modal" class="search-modal">
-  <div class="modal-header">
-    <button onclick="closeSearchModal()" class="close-btn">✕</button>
-    <input id="search-input" type="search" placeholder="Search for movies..." oninput="searchTMDB()" />
+  <div class="navbar">
+    <img src="logo.png" alt="LOGO HERE" />
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
+    </div>
   </div>
-  <div id="search-results" class="search-results"></div>
-</div>
 
   <div class="banner" id="banner">
     <h1 id="banner-title"></h1>
@@ -74,26 +63,22 @@
     </div>
   </div>
 
+  <div class="search-modal" id="search-modal">
+    <span class="close" onclick="closeSearchModal()" style="color: red;">&times;</span>
+    <input type="text" id="search-input" placeholder="Search for a movie or show..." oninput="searchTMDB()" />
+    <div class="results" id="search-results"></div>
+  </div>
+
 <footer class="footer">
   <div class="footer-content">
-    <p style="color: red;">© 2025 iWantMovi.es. All rights reserved.</p>
-    <small style="color:#888;">
-      This website does not host or upload any media files on its own servers. All content is provided by
-      third-party services and embedded directly from external sources. We do not claim ownership of any videos
-      or streams shown here. If you have any legal concerns, please contact the content providers directly.
-    </small>
+    <p>&copy; 2025 My Website. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Disclaimer</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+    </div>
   </div>
 </footer>
 
-  <script>
-  function openSearchModal() {
-    document.getElementById('search-modal').style.display = 'flex';
-    document.getElementById('search-input').focus();
-  }
-
-  function closeSearchModal() {
-    document.getElementById('search-modal').style.display = 'none';
-    document.getElementById('search-results').innerHTML = '';
-  }
-</script>
+  
 </body>
