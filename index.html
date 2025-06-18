@@ -1,14 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IWantMovies</title>
+  <title>My Website</title>
 
-  <!-- Styles -->
+  <!-- Correct paths -->
   <link rel="stylesheet" href="css/home.css">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="images/favicon.png" type="image/png">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -18,56 +16,52 @@
 </head>
 
 <body>
-  <div class="navbar">
-    <a href="index.html">
-      <img src="images/logo-transparent.png" alt="IWantMovies Logo" class="site-logo-img" />
-    </a>
-    <div class="nav-actions">
-      <i class="fa fa-search" onclick="openSearchModal()"></i>
-    </div>
+<div class="navbar">
+  <a href="index.html">
+    <img src="images/logo-transparent.png" alt="IWantMovies Logo" class="site-logo-img" />
+  </a>
+  <i class="fa fa-search" onclick="openSearchModal()" style="color:white; font-size:20px; cursor:pointer;"></i>
+</div>
+
+<div id="search-modal" class="search-modal">
+  <div class="modal-header">
+    <button onclick="closeSearchModal()" class="close-btn">✕</button>
+    <input id="search-input" type="search" placeholder="Search for movies..." oninput="searchTMDB()" />
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  <div class="banner" id="banner">
+    <h1 id="banner-title"></h1>
   </div>
 
-  <div id="search-modal" class="search-modal">
-    <div class="modal-header">
-      <button onclick="closeSearchModal()" class="close-btn">✕</button>
-      <input id="search-input" type="search" placeholder="Search for movies..." oninput="searchTMDB()" />
-    </div>
-    <div id="search-results" class="search-results"></div>
+  <div class="row">
+    <h2>Trending Movies</h2>
+    <div class="list" id="movies-list"></div>
   </div>
 
-  <main>
-    <div class="banner" id="banner">
-      <h1 id="banner-title"></h1>
-    </div>
+  <div class="row">
+    <h2>Trending TV Shows</h2>
+    <div class="list" id="tvshows-list"></div>
+  </div>
 
-    <div class="row">
-      <h2>Trending Movies</h2>
-      <div class="list" id="movies-list"></div>
-    </div>
-
-    <div class="row">
-      <h2>Trending TV Shows</h2>
-      <div class="list" id="tvshows-list"></div>
-    </div>
-
-    <div class="row">
-      <h2>Trending Anime</h2>
-      <div class="list" id="anime-list"></div>
-    </div>
-  </main>
+  <div class="row">
+    <h2>Trending Anime</h2>
+    <div class="list" id="anime-list"></div>
+  </div>
 
   <div class="modal" id="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="close" onclick="closeModal()" style="color: red;">&times;</span>
       <div class="modal-body">
-        <img id="modal-image" src="" alt="" />
-        <div class="modal-text">
-          <h2 id="modal-title"></h2>
-          <div class="stars" id="modal-rating"></div>
-          <p id="modal-description"></p>
-        </div>
-      </div>
-
+  <img id="modal-image" src="" alt="" />
+  <div class="modal-text">
+    <h2 id="modal-title"></h2>
+    <div class="stars" id="modal-rating"></div>
+    <p id="modal-description"></p>
+  </div>
+</div>
+      
       <div class="server-selector">
         <label for="server">Change Server:</label>
         <select id="server" onchange="changeServer()">
@@ -76,33 +70,30 @@
           <option value="player.videasy.net">Player.Videasy.net</option>
         </select>
       </div>
-      <iframe id="modal-video" frameborder="0" allowfullscreen>
-        Your browser does not support video iframes.
-      </iframe>
+      <iframe id="modal-video" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <p style="color: red;">© 2025 iWantMovi.es. All rights reserved.</p>
-      <small style="color:#888;">
-        This website does not host or upload any media files on its own servers. All content is provided by
-        third-party services and embedded directly from external sources. We do not claim ownership of any videos
-        or streams shown here. If you have any legal concerns, please contact the content providers directly.
-      </small>
-    </div>
-  </footer>
+<footer class="footer">
+  <div class="footer-content">
+    <p style="color: red;">© 2025 iWantMovi.es. All rights reserved.</p>
+    <small style="color:#888;">
+      This website does not host or upload any media files on its own servers. All content is provided by
+      third-party services and embedded directly from external sources. We do not claim ownership of any videos
+      or streams shown here. If you have any legal concerns, please contact the content providers directly.
+    </small>
+  </div>
+</footer>
 
   <script>
-    function openSearchModal() {
-      document.getElementById('search-modal').style.display = 'flex';
-      document.getElementById('search-input').focus();
-    }
+  function openSearchModal() {
+    document.getElementById('search-modal').style.display = 'flex';
+    document.getElementById('search-input').focus();
+  }
 
-    function closeSearchModal() {
-      document.getElementById('search-modal').style.display = 'none';
-      document.getElementById('search-results').innerHTML = '';
-    }
-  </script>
+  function closeSearchModal() {
+    document.getElementById('search-modal').style.display = 'none';
+    document.getElementById('search-results').innerHTML = '';
+  }
+</script>
 </body>
-</html>
