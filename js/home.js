@@ -110,14 +110,26 @@ const API_KEY = '9b53fd6f29ee601ac4a3d721b3d7ffe5';
     }
 
     async function init() {
-      const movies = await fetchTrending('movie');
-      const tvShows = await fetchTrending('tv');
-      const anime = await fetchTrendingAnime();
+  const movies = await fetchTrending('movie');
+  const tvShows = await fetchTrending('tv');
+  const anime = await fetchTrendingAnime();
 
-      displayBanner(movies[Math.floor(Math.random() * movies.length)]);
-      displayList(movies, 'movies-list');
-      displayList(tvShows, 'tvshows-list');
-      displayList(anime, 'anime-list');
-    }
+  const selectedBannerMovie = movies[Math.floor(Math.random() * movies.length)];
+  displayBanner(selectedBannerMovie);
+  fetchMovieExtraDetails(selectedBannerMovie.id);
+
+  displayList(movies, 'movies-list');
+  displayList(tvShows, 'tvshows-list');
+  displayList(anime, 'anime-list');
+}
 
     init();
+    
+    async function fetchMovieExtraDetails(movieId) {
+  const res = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
+  const data = await res.json();
+
+  document.getElementById('banner-genre').textContent = 'Genre: ' + data.genres.map(g => g.name).join(', ');
+  document.getElementById('banner-rating').textContent = 'IMDb Rating: ⭐ ' + (data.vote_average || 'N/A');
+  document.getElementById('banner-plot').textContent = data.overview || 'No plot summary available.';
+}

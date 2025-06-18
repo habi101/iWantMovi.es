@@ -51,18 +51,22 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-    .banner {
-      height: 50vh;
-      background-size: cover;
-      display: flex;
-      align-items: center;
-      padding: 20px;
-    }
+.banner {
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+}
 
-    .banner h1 {
-      background: transparent;
-      padding: 10px;
-    }
+.banner-details {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 20px;
+  border-radius: 10px;
+  max-width: 90%;
+}
 
     .row {
       margin: 20px;
