@@ -1,24 +1,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Website</title>
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="preload" href="css/home.css" as="style">
-  <link rel="preload" href="js/home.js" as="script">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/home.css" />
+
+  <!-- Preload (optional for performance) -->
+  <link rel="preload" href="css/home.css" as="style" />
+  <link rel="preload" href="js/home.js" as="script" />
+
+  <!-- Favicon (optional but recommended) -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Font Awesome Icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-..." 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+  />
+
+  <!-- JS (defer ensures it's loaded after HTML) -->
   <script defer src="js/home.js"></script>
 </head>
 
 <body>
   <div class="navbar">
+  <a href="index.html">
     <img src="images/logo-transparent.png" alt="LOGO HERE" class="site-logo-img" />
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
-    </div>
+  </a>
+  <div class="nav-links">
+    <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
   </div>
+</div>
 
   <div class="banner" id="banner">
     <h1 id="banner-title"></h1>
@@ -71,7 +91,7 @@
 
 <footer class="footer">
   <div class="footer-content">
-    <p>&copy; 2025 My Website. All rights reserved.</p>
+    <p>&copy; 2025 iWantMovi.es. All rights reserved.</p>
     <div class="footer-links">
       <a href="#">Disclaimer</a>
       <a href="#">About Us</a>
