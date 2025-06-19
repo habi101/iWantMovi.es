@@ -25,11 +25,29 @@ const API_KEY = '9b53fd6f29ee601ac4a3d721b3d7ffe5';
   return allResults;
 }
 
+function displayBanner(item) {
+  document.getElementById('banner').style.backgroundImage = `url(${IMG_URL}${item.backdrop_path})`;
+  document.getElementById('banner-title').textContent = item.title || item.name;
+  document.getElementById('banner-rating').textContent = `★ ${item.vote_average.toFixed(1)}`;
+  document.getElementById('banner-plot').textContent = item.overview || 'No description available';
+  document.getElementById('banner-genre').textContent = 'Loading genres...';
 
-    function displayBanner(item) {
-      document.getElementById('banner').style.backgroundImage = `url(${IMG_URL}${item.backdrop_path})`;
-      document.getElementById('banner-title').textContent = item.title || item.name;
-    }
+  // Fetch genres
+  fetch(`${BASE_URL}/${item.media_type}/${item.id}?api_key=${API_KEY}`)
+    .then(res => res.json())
+    .then(data => {
+      const genres = data.genres?.map(g => g.name).join(', ') || 'N/A';
+      document.getElementById('banner-genre').textContent = genres;
+    })
+    .catch(() => {
+      document.getElementById('banner-genre').textContent = 'N/A';
+    });
+
+  // Enable Watch Now button
+  currentItem = item; // Save current item globally
+  document.getElementById('watch-now-btn').onclick = () => showDetails(item);
+}
+    
 
     function displayList(items, containerId) {
       const container = document.getElementById(containerId);

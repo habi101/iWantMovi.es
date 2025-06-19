@@ -1,11 +1,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
   font-family: Arial, sans-serif;
-  background: url('../images/background.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background-color: #000; /* pure black */
+  /* Or use #111 for softer black */
+  background-image: none; /* make sure image is removed */
   color: #fff;
-  margin: 0;
-  padding: 0;
 }
 
 .navbar {
@@ -72,16 +71,6 @@
   max-width: 90%;
 }
 
-.banner-content {
-  position: relative;
-  z-index: 1;
-  max-width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 15px;
-  border-radius: 10px;
-  width: 100%;
-}
-
 #banner-title {
   font-size: 22px;
   font-weight: bold;
@@ -104,6 +93,23 @@
   font-size: 13px;
   color: #ddd;
   line-height: 1.4;
+}
+
+#watch-now-btn {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+#watch-now-btn:hover {
+  background: #b00610;
 }
 
     .row {
@@ -378,4 +384,9 @@
 
 .site-logo-img {
   animation: fadeInScale 1.5s ease-in-out forwards;
+}
+
+.site-logo-img {
+  height: 50px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
 }
