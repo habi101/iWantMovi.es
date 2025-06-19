@@ -139,6 +139,17 @@ function displayBanner(item) {
   displayList(movies, 'movies-list');
   displayList(tvShows, 'tvshows-list');
   displayList(anime, 'anime-list');
+  
+  let currentBannerIndex = 0;
+
+function cycleBanners(movies) {
+  displayBanner(movies[currentBannerIndex]);
+  currentBannerIndex = (currentBannerIndex + 1) % movies.length;
+}
+
+setInterval(() => {
+  cycleBanners(movies);
+}, 5000); // changes banner every 5 seconds
 }
 
     init();
