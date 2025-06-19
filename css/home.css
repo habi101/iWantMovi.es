@@ -52,20 +52,58 @@
 }
 
 .banner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
   height: 50vh;
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  color: #fff;
 }
 
-.banner-details {
+.banner-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1;
   background: rgba(0, 0, 0, 0.6);
-  padding: 15px 20px;
+  padding: 15px;
   border-radius: 10px;
   max-width: 90%;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+#banner-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#banner-rating {
+  color: gold;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+#banner-genre {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+#banner-plot {
+  font-size: 13px;
+  color: #ddd;
+  line-height: 1.4;
 }
 
     .row {
