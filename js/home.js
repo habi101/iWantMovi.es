@@ -72,24 +72,20 @@ function displayBanner(item) {
     }
 
     function changeServer() {
-  const server = document.getElementById('server').value;
-  const type = currentItem.media_type === "movie" ? "movie" : "tv";
-  let embedURL = "";
+      const server = document.getElementById('server').value;
+      const type = currentItem.media_type === "movie" ? "movie" : "tv";
+      let embedURL = "";
 
-  if (server === "player.videasy.net") {
-    embedURL = `https://player.videasy.net/${type}/${currentItem.id}`;
-  } else if (server === "vidsrc.me") {
-    embedURL = `https://vidsrc.net/embed/${type}/?tmdb=${currentItem.id}`;
-  } else if (server === "vidsrc.cc") {
-    embedURL = `https://vidsrc.cc/v2/embed/${type}/${currentItem.id}`;
-  } else {
-    // Fallback if no known server selected
-    console.warn("Selected server is not supported.");
-    embedURL = ""; // Or set to a placeholder video/message URL
-  }
+      if (server === "vidsrc.cc") {
+        embedURL = `https://vidsrc.cc/v2/embed/${type}/${currentItem.id}`;
+      } else if (server === "vidsrc.me") {
+        embedURL = `https://vidsrc.net/embed/${type}/?tmdb=${currentItem.id}`;
+      } else if (server === "player.videasy.net") {
+        embedURL = `https://player.videasy.net/${type}/${currentItem.id}`;
+      }
 
-  document.getElementById('modal-video').src = embedURL;
-}
+      document.getElementById('modal-video').src = embedURL;
+    }
 
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
