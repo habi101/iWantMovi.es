@@ -72,20 +72,59 @@ function displayBanner(item) {
     }
 
     function changeServer() {
-      const server = document.getElementById('server').value;
-      const type = currentItem.media_type === "movie" ? "movie" : "tv";
-      let embedURL = "";
+  const serverList = [
+    "player.videasy.net",
+    "vidsrc.me",
+    "vidsrc.cc"
+  ];
 
-      if (server === "vidsrc.cc") {
-        embedURL = `https://vidsrc.cc/v2/embed/${type}/${currentItem.id}`;
-      } else if (server === "vidsrc.me") {
-        embedURL = `https://vidsrc.net/embed/${type}/?tmdb=${currentItem.id}`;
-      } else if (server === "player.videasy.net") {
-        embedURL = `https://player.videasy.net/${type}/${currentItem.id}`;
-      }
+  const selected = document.getElementById('server').value;
+  const type = currentItem.media_type === "movie" ? "movie" : "tv";
+  const iframe = document.getElementById('modal-video');
 
-      document.getElementById('modal-video').src = embedURL;
+  // Construct embed URL
+  const getEmbedURL = (server) => {
+    if (server === "player.videasy.net") {
+      return `https://player.videasy.net/${type}/${currentItem.id}`;
+    } else if (server === "vidsrc.me") {
+      return `https://vidsrc.net/embed/${type}/?tmdb=${currentItem.id}`;
+    } else if (server === "vidsrc.cc") {
+      return `https://vidsrc.cc/v2/embed/${type}/${currentItem.id}`;
     }
+    return "";
+  };
+
+  let tried = [];
+  let currentIndex = serverList.indexOf(selected);
+
+  function tryNextServer(index) {
+    if (index >= serverList.length) {
+      console.warn("All servers failed to load.");
+      iframe.src = ""; // blank or fallback
+      return;
+    }
+
+    const server = serverList[index];
+    const url = getEmbedURL(server);
+    tried.push(server);
+
+    iframe.onerror = function () {
+      console.warn(`Failed to load from: ${server}`);
+      tryNextServer(index + 1);
+    };
+
+    iframe.onload = function () {
+      console.log(`Loaded from: ${server}`);
+      // Remove the error handler once loaded
+      iframe.onerror = null;
+    };
+
+    iframe.src = url;
+  }
+
+  // Start trying from selected server
+  tryNextServer(currentIndex);
+}
 
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
