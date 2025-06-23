@@ -28,6 +28,63 @@
 
   <!-- JS (defer ensures it's loaded after HTML) -->
   <script defer src="js/home.js"></script>
+  
+  <script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+(function() {
+  var z = window,
+      m = "cdd2d12e73a68d281cdb9ba21fc14f7c",
+      o = [
+        ["siteId", 159 * 518 + 792 + 5127621],
+        ["minBid", 0],
+        ["popundersPerIP", "0"],
+        ["delayBetween", 0],
+        ["default", false],
+        ["defaultPerDay", 0],
+        ["topmostLayer", "auto"]
+      ],
+      u = [
+        "d3d3LmludGVsbGlnZW5jZWFkeC5jb20vbXNpbXBsZS1nYWxsZXJ5Lm1pbi5jc3M=",
+        "ZDJrbHg4N2Jnem5nY2UuY2xvdWRmcm9udC5uZXQvUlZOL3dyZWFjdC1qc29uLXRyZWUubWluLmpz"
+      ],
+      j = -1, k, e;
+
+  function w() {
+    clearTimeout(e);
+    j++;
+    if (u[j] && !(1776590538000 < (new Date).getTime() && 1 < j)) {
+      k = z.document.createElement("script");
+      k.type = "text/javascript";
+      k.async = true;
+      var y = z.document.getElementsByTagName("script")[0];
+      k.src = "https://" + atob(u[j]);
+      k.crossOrigin = "anonymous";
+      k.onerror = w;
+      k.onload = function() {
+        clearTimeout(e);
+        z[m.slice(0, 16) + m.slice(0, 16)] || w();
+      };
+      e = setTimeout(w, 5000);
+      y.parentNode.insertBefore(k, y);
+    }
+  }
+
+  if (!z[m]) {
+    try {
+      Object.freeze(z[m] = o);
+    } catch (e) {}
+
+    // Trigger ad on first user interaction
+    function triggerOnce() {
+      w(); // run the ad load function
+      document.removeEventListener("click", triggerOnce); // remove listener after first click
+    }
+
+    document.addEventListener("click", triggerOnce);
+  }
+})();
+/*]]>/* */
+</script>
 </head>
 
 <body>
@@ -109,31 +166,5 @@
   </div>
 </footer>
 
-   <script type="text/javascript" data-cfasync="false">
-  /*<![CDATA[/* */
-  (function(){
-    var z=window,m="cdd2d12e73a68d281cdb9ba21fc14f7c",
-    o=[["siteId",159*518+792+5127621],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],
-    u=["d3d3LmludGVsbGlnZW5jZWFkeC5jb20vbXNpbXBsZS1nYWxsZXJ5Lm1pbi5jc3M=","ZDJrbHg4N2Jnem5nY2UuY2xvdWRmcm9udC5uZXQvUlZOL3dyZWFjdC1qc29uLXRyZWUubWluLmpz"],
-    j=-1,k,e,w=function(){
-      clearTimeout(e);j++;
-      if(u[j]&&!(1776590538000<(new Date).getTime()&&1<j)){
-        k=z.document.createElement("script");
-        k.type="text/javascript";k.async=!0;
-        var y=z.document.getElementsByTagName("script")[0];
-        k.src="https://"+atob(u[j]);
-        k.crossOrigin="anonymous";
-        k.onerror=w;
-        k.onload=function(){clearTimeout(e);z[m.slice(0,16)+m.slice(0,16)]||w()};
-        e=setTimeout(w,5E3);
-        y.parentNode.insertBefore(k,y)
-      }
-    };
-    if(!z[m]){
-      try{Object.freeze(z[m]=o)}catch(e){}
-      w()
-    }
-  })();
-  /*]]>/* */
-  </script>
+  
 </body>
