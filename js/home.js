@@ -50,16 +50,22 @@ function displayBanner(item) {
     
 
     function displayList(items, containerId) {
-      const container = document.getElementById(containerId);
-      container.innerHTML = '';
-      items.forEach(item => {
-        const img = document.createElement('img');
-        img.src = `${IMG_URL}${item.poster_path}`;
-        img.alt = item.title || item.name;
-        img.onclick = () => showDetails(item);
-        container.appendChild(img);
-      });
-    }
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  items.forEach(item => {
+    const link = document.createElement('a');
+    link.href = `https://iwantmovi-es.pages.dev/watch-movie.html?tmdb=${item.id}&type=${item.media_type || 'movie'}`;
+    link.target = '_blank'; // Open in new tab
+    link.rel = 'noopener noreferrer';
+
+    const img = document.createElement('img');
+    img.src = `${IMG_URL}${item.poster_path}`;
+    img.alt = item.title || item.name;
+
+    link.appendChild(img);
+    container.appendChild(link);
+  });
+}
 
     function showDetails(item) {
       currentItem = item;
